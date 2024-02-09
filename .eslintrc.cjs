@@ -20,6 +20,15 @@ module.exports = {
     'react/prop-types': 0,
     'react/display-name': 0,
 
+    //mui
+    'no-restricted-imports': [
+      'error',
+      {
+        'patterns': ['@mui/*/*/*']
+      }
+    ],
+
+    //Common
     'no-console': 1,
     'no-lonely-if': 1,
     'no-unused-vars': 1,
@@ -30,7 +39,7 @@ module.exports = {
     'object-curly-spacing': [1, 'always'],
     'indent': ['warn', 2],
     'semi': [1, 'never'],
-    'quotes': ['error', 'single'],
+    // 'quotes': ['error', 'single'],
     'array-bracket-spacing': 1,
     'linebreak-style': 0,
     'no-unexpected-multiline': 'warn',

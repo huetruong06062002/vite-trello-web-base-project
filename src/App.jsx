@@ -1,12 +1,12 @@
-import { useState } from "react";
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
-import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
-import HomeIcon from "@mui/icons-material/Home";
 
-import { pink } from '@mui/material/colors';
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm'
+import ThreeDRotation from '@mui/icons-material/ThreeDRotation'
+import HomeIcon from '@mui/icons-material/Home'
+
+import { pink } from '@mui/material/colors'
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <HomeIcon sx={{ color: pink[900] }} />
       </Stack>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
