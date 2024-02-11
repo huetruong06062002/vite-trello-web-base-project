@@ -1,4 +1,5 @@
 
+
 import Board from './pages/Boards/_id'
 
 
@@ -11,5 +12,3 @@ function App() {
    </>
   )
 }
-
-export default App
