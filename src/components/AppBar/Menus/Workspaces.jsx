@@ -48,6 +48,9 @@ function Workspaces() {
           vertical: "top",
           horizontal: "left",
         }}
+        sx={{
+          marginTop: "1.5rem",
+        }}
       >
         <MenuItem>
           <ListItemIcon>

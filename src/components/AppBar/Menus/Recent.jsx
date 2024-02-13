@@ -45,6 +45,9 @@ function Recent() {
           vertical: "top",
           horizontal: "left",
         }}
+        sx={{
+          marginTop: "1.5rem",
+        }}
       >
         <MenuItem>
           <ListItemText inset>Single</ListItemText>
