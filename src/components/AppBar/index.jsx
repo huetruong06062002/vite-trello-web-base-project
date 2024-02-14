@@ -14,10 +14,9 @@ import TextField from "@mui/material/TextField";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import Profiles from './Menus/ProFiles';
-
-
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import Profiles from "./Menus/ProFiles";
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 function AppBar() {
   return (
     <div>
@@ -29,6 +28,8 @@ function AppBar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: 2,
+          overflow: 'auto'
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -46,11 +47,13 @@ function AppBar() {
               Trello
             </Typography>
           </Box>
-          <Workspaces />
-          <Recent />
-          <Starred />
-          <Templates />
-          <Button variant="outlined">Create</Button>
+          <Box sx={{display: {xs:'none', md: 'flex'}, gap: 1}}>
+            <Workspaces />
+            <Recent />
+            <Starred />
+            <Templates />
+            <Button variant="outlined" startIcon={<LibraryAddIcon/>}>Create</Button>
+          </Box>
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -59,23 +62,26 @@ function AppBar() {
             label="Search..."
             size="small"
             type="search"
+            sx={{minWidth:'120px'}}
           />
           <ModeSelect />
           <Tooltip title="Notification">
-            <Badge color="secondary" variant="dot" sx={{cursor:'pointer'}}>
-              <NotificationsNoneIcon sx={{color: 'primary.main'}}/>
+            <Badge color="secondary" variant="dot" sx={{ cursor: "pointer" }}>
+              <NotificationsNoneIcon sx={{ color: "primary.main" }} />
             </Badge>
           </Tooltip>
           <Tooltip title="Help">
-            <Badge color="secondary" variant="dot" sx={{cursor:'pointer'}}>
-              <HelpOutlineIcon sx={{cursor:'pointer', color: 'primary.main'}}/>
+            <Badge color="secondary" variant="dot" sx={{ cursor: "pointer" }}>
+              <HelpOutlineIcon
+                sx={{ cursor: "pointer", color: "primary.main" }}
+              />
             </Badge>
           </Tooltip>
-          <Profiles/>
+          <Profiles />
         </Box>
       </Box>
     </div>
-  )
+  );
 }
 
 export default AppBar;
