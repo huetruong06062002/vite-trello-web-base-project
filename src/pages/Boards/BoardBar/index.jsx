@@ -94,8 +94,13 @@ function BoardBar() {
               "&. MuiAvatar-root": {
                 width: 34,
                 height: 34,
-                fontSize: 16,
+                fontSize: 12,
                 border:'none',
+                color:'white',
+                cursor: 'pointer',
+                '&:first-of-type': {
+                  bgColor: '#a4b0be'
+                }
               },
             }}
           >
