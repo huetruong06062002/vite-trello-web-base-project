@@ -10,6 +10,8 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import { Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { capitalizeFirstLetter } from '~/utils/formatter';
+
 
 const MENU_STYLES = {
   color: "white",
@@ -25,7 +27,9 @@ const MENU_STYLES = {
   },
 };
 
-function BoardBar() {
+function BoardBar( {board} ) {
+
+console.log(board)
   return (
     <Box
       sx={{
@@ -45,7 +49,7 @@ function BoardBar() {
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <Chip
           icon={<DashboardIcon />}
-          label="Dashboard"
+          label={capitalizeFirstLetter(board?.type)}
           clickable
           sx={MENU_STYLES}
         />
@@ -87,7 +91,7 @@ function BoardBar() {
           Invite
         </Button>
         <AvatarGroup
-          max={7}
+          max={3}
           sx={{
             gap: "10px",
             "&. MuiAvatar-root": {

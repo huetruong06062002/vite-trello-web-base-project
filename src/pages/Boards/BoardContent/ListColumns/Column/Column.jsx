@@ -1,23 +1,15 @@
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Typography from "@mui/material/Typography";
-import ContentCut from "@mui/icons-material/ContentCut";
-import Cloud from "@mui/icons-material/Cloud";
-import Divider from "@mui/material/Divider";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import { useState } from "react";
-import { Tooltip } from "@mui/material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { ContentCopy, ContentPaste } from "@mui/icons-material";
+import { Tooltip, Typography } from "@mui/material";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ListCards from "./ListCards/ListCards";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { mapOrder } from '~/utils/sorts';
 
-function Column() {
+function Column({column}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,6 +18,10 @@ function Column() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+  const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, "_id");
+  
 
   return (
     <Box
@@ -40,7 +36,7 @@ function Column() {
         maxHeight: (theme) => `calc(${theme.trello.boardContentHeight}) - ${theme.spacing(5)}`,
       }}
     >
-      {/* Box Header Footer*/}
+      {/* Box Header*/}
       <Box
         sx={{
           height: (theme) => theme.trello.columnHeaderHeight,
@@ -50,14 +46,22 @@ function Column() {
           justifyContent: "space-between",
         }}
       >
-        <Button startIcon={<AddCardIcon />}>Add new card</Button>
-        <Tooltip title="Drag to move">
-          <DragHandleIcon sx={{ cursor: "pointer" }} />
+       
+        <Typography variant='h6' sx={{
+          fontSize:'1 rem',
+          fontWeight:'bold',
+          cursor:'pointer',
+        }}>
+          {column?.title}
+        </Typography>
+
+        <Tooltip title="Drop Down">
+          <ArrowDropDownIcon sx={{ cursor: "pointer" }} />
         </Tooltip>
       </Box>
 
       {/*List Cards */}
-      <ListCards />
+      <ListCards cards={orderedCards} />
 
       {/* Box Column Footer*/}
       <Box
