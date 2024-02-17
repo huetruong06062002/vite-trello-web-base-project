@@ -8,8 +8,28 @@ import Button from "@mui/material/Button";
 import ListCards from "./ListCards/ListCards";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { mapOrder } from '~/utils/sorts';
+import {useSortable} from '@dnd-kit/sortable';
+import {CSS} from '@dnd-kit/utilities';
+
 
 function Column({column}) {
+
+  const {attributes, listeners, setNodeRef, transform, transition } = useSortable({
+      id: column._id,
+      data: { ...column } 
+    });
+    
+    
+  
+  const dndKitColumnStyles = {
+    touchAction: 'none',
+
+    //Nếu sử dụng CSS.trasform như docs sẽ lỗi kiểu stretch
+    transform: CSS.Translate.toString(transform),
+    transition,
+  };
+
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,6 +45,10 @@ function Column({column}) {
 
   return (
     <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyles }
+      {...attributes} 
+      {...listeners}
       sx={{
         minWidth: "300px",
         maxWidth: "300px",
@@ -36,7 +60,7 @@ function Column({column}) {
         maxHeight: (theme) => `calc(${theme.trello.boardContentHeight}) - ${theme.spacing(5)}`,
       }}
     >
-      {/* Box Header*/}
+      {/* Box Column Header*/}
       <Box
         sx={{
           height: (theme) => theme.trello.columnHeaderHeight,
