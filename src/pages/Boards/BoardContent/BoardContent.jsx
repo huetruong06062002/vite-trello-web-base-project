@@ -10,6 +10,7 @@ import {
   useSensors,
   DragOverlay,
   defaultDropAnimationSideEffects,
+  closestCorners
 } from "@dnd-kit/core";
 import { useEffect, useState } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
@@ -219,6 +220,7 @@ function BoardContent({ board }) {
     <div>
       <DndContext
         sensors={sensors}
+        collisionDetection={closestCorners}//Dùng closeseCorners thay vì closestCenter
         onDragStart={handleDragStart}
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
